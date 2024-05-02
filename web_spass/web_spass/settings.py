@@ -31,6 +31,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+MIDDLEWARE = [
+    # otras middlewares...
+    'path.to.your.middleware.auth_middleware',
+]
+
+LOGIN_REDIRECT_URL = 'home'
+
 
 # Application definition
 

@@ -1,0 +1,17 @@
+
+{% extends 'home.html' %}
+
+{% block contenido %}
+
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+{% endblock %}

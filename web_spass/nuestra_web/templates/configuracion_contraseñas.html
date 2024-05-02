@@ -1,8 +1,28 @@
 {% extends 'home.html' %}
 
 {% block contenido %}
-<h2>Otra página</h2>
-<p>Contenido de otra página.</p>
+
+<h1>Configuración de Contraseña - Gestor de Directorios</h1>
+<form method="post">
+    {% csrf_token %}
+    <h2>Create Folder</h2>
+    {{ folder_form.as_p }}
+    <button type="submit">Create Folder</button>
+
+    <h2>Create Item</h2>
+    {{ item_form.as_p }}
+    <input type="hidden" name="folder_id" value="{{ folders.first.id }}"> <!-- Adjust if needed -->
+    <button type="submit">Create Item</button>
+</form>
+
+<h2>Folders</h2>
+{% for folder in folders %}
+    <h3>{{ folder.name }}</h3>
+    <ul>
+        {% for item in folder.items.all %}
+            <li>{{ item.name }}: {{ item.content }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
 
 

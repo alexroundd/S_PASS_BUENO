@@ -32,6 +32,18 @@
                 {% if not request.resolver_match.url_name == 'agregar_entrada' %}
                 <li><a class="btn btn-outline-light" href="{% url 'agregar_entrada' %}">Agregar nueva entrada</a></li>
                 {% endif %}
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="/nuestra_web/static/img/profilepic.jpg" alt="profile_pic"> 
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <p class="dropdown-item">Sesión iniciada como {{ user.username }}</p>
+                            <a class="dropdown-item" href="{% url 'login' %}">Cerrar sesión</a>
+                        </div>
+                    </div>
+                {% endif %}
+
             </ul> 
         </nav>
         {% if request.resolver_match.url_name == 'home' %}
