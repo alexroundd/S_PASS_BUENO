@@ -39,6 +39,7 @@ MIDDLEWARE = [
 LOGIN_REDIRECT_URL = 'home'
 
 
+
 # Application definition
 
 INSTALLED_APPS = [

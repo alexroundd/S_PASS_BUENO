@@ -10,7 +10,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 
-def encriptar_contraseña(contraseña):
+def encriptar_contraseñas(contraseña):
     cifrador = Fernet(settings.CLAVE_ENCRIPTACION)
     return cifrador.encrypt(contraseña.encode()).decode()
 
@@ -30,7 +30,7 @@ class Entrada(models.Model):
     
     def save(self, *args, **kwargs):
         # Antes de guardar, encriptar la contraseña
-        self.contraseña_encriptada = encriptar_contraseña(self.contraseña_encriptada)
+        self.contraseña_encriptada = encriptar_contraseñas(self.contraseña_encriptada)
         super().save(*args, **kwargs)
     
     def obtener_contraseña(self):

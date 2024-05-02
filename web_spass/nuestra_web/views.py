@@ -4,24 +4,25 @@ from .forms import EntradaForm
 import os
 from django.http import JsonResponse
 from .forms import FolderForm, ItemForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from .forms import RegisterForm
+from django.contrib.auth import login as auth_login
 
 def register(request):
-    if request.user.is_authenticated:
-        return redirect('login')  # Redirige a la página principal si ya está autenticado
+#    if request.user.is_authenticated:
+#        return redirect('login')  # Redirige a la página principal si ya está autenticado
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # Inicia sesión automáticamente al usuario registrado
+            auth_login(request, user)  # Inicia sesión automáticamente al usuario registrado
             return redirect('home')
     else:
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
-def login(request):
+def loginView(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, request.POST)
         if form.is_valid():
@@ -29,7 +30,7 @@ def login(request):
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
             if user is not None:
-                login(request, user)
+                auth_login(request, user)
                 return redirect('home')  # Redirige a la página de inicio después del inicio de sesión
     else:
         form = AuthenticationForm()

@@ -3,3 +3,16 @@ hola chat, te voy a poner en contexto de mi proyecto de django para que me ayude
 quiero que me expliques como hacer un gestor de directorios e implementarlo en nuestro codigo, este gestor de directorios quiero que funcione de la siguiete manera: quiero que se puedan crear y eliminar directorios y que se puedan crear directorios dentro de otros. Tambien quiero un apartado en la misma pagina la cual se vea el contenido que hay en ese directorio. Todo esto quiero qeu este el el home
 
 Entendido, lo que estás buscando es implementar una funcionalidad en tu proyecto Django que simule el manejo de directorios o "folders" pero de manera virtual, es decir, estos "directorios" no existirán en el sistema de archivos del servidor, sino que serán representaciones dentro de tu aplicación web. Cada "folder" puede ser creado, eliminado y navegado dentro de la interfaz de la página web, y podrás asignarle un contenido específico a cada uno.
+
+
+               {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img src="{% static 'img/profilepic.jpg' %}" alt="profile_pic" style="width: 20px; height: auto;"> 
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            <p class="dropdown-item">Sesión iniciada como {{ user.username }}</p>
+                            <a class="dropdown-item" href="{% url 'login' %}">Cerrar sesión</a>
+                        </div>
+                    </div>
+                {% endif %}
