@@ -1,0 +1,159 @@
+/* BODY */
+
+body {
+    font-family: Arial, sans-serif;
+    background: #292929;
+    color: white;
+}
+
+/* HEADER */
+
+header{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1vh;
+    z-index: 999;
+    padding: 2.5vh;
+}
+
+/* LINKS Y BUSCADOR HEADER */
+
+.opciones_header {
+    float: left;
+}
+
+.opciones_header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.opciones_header ul li {
+    display: inline;
+    margin-right: 10px; /* Espacio entre los enlaces */
+}
+
+/* TITULO AGREGAR NUEVA ENTRADA */
+
+.agregar_nueva{
+    margin: 0;
+}
+
+/* BUSCADOR */
+
+.buscador {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    transition: opacity 0.5s ease;
+    float: right;
+}
+
+.buscador:hover {
+    opacity: 80%;
+}
+
+.buscador form {
+    background-color: #d9d9d9; /* Color de fondo semitransparente */
+    border-radius: 20px; /* Bordes redondeados */
+    padding: 5px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.buscador input[type="text"] {
+    border: none;
+    background: none;
+    outline: none;
+    width: 25vw;
+    padding: 5px;
+    color: #333; /* Color del texto */
+}
+
+.buscador button[type="submit"] {
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #333; /* Color del texto */
+}
+
+/* Estilos para el desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle::after {
+    content: "\25BC";
+    margin-left: 5px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.dropdown-menu li a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #f1f1f1;
+}
+
+/* ENTRADAS */
+
+.entradas{
+    width: 40vw;
+    margin: auto;
+}
+
+/* COLUMNAS DE HOME */
+
+.columnass {
+    display: flex;
+}
+
+.columna_biblioteca {
+    flex: 1 1 25%; 
+    margin: 2vw; 
+    background-color: grey;
+    border-radius: 1em;
+    text-align: center;
+}
+
+.columna_entradas {
+    flex: 1 1 75%;
+    margin: 2vw; 
+    background-color: grey;
+    border-radius: 1em;
+    text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1vh;
+}
