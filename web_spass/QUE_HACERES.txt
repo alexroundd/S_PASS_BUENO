@@ -1,0 +1,7 @@
+Quitar el buscador y mirar el css del header
+ver porque el formulario de las entradas no funciona
+agregar grupos (folders) como me ha dicho el unai, se veran mediante diferentes links y hay que hacer que todas las entradas estane en global
+configurar la calidad de la contraseña
+reorganizar paginas, login, register, home...
+hacer el diseño del register y del login
+no funciona ver mas en las entradas
