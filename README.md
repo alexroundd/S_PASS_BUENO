@@ -1,5 +1,7 @@
 ## Gestor de contraseñas S-PASS 
 S-PASS és un gestor de contrasenyes segur dissenyat per proporcionar un emmagatzematge i gestió eficients de les contrasenyes en un entorn digital cada vegada més complex. Desenvolupat en el context d'un curs d'estudis de Ciberseguretat, S-PASS aborda la necessitat crítica de gestionar contrasenyes de manera segura i efectiva, oferint una solució integral tant per a usuaris individuals com empresarials.
+![GIF cyber](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdmZxaGVqNmVlMzJoeTM5NjdvZnFyeXVwb21vdmhvOXU2N3p1dmt6biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RDZo7znAdn2u7sAcWH/giphy.gif) "cyber")
+
 ## Característiques
 
 - **Generació de Contrasenyes Segures**: Permet crear contrasenyes robustes i úniques que incrementen la seguretat de les teves comptes.
