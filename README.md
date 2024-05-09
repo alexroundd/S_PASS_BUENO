@@ -10,14 +10,14 @@ S-PASS és un gestor de contrasenyes segur dissenyat per proporcionar un emmagat
 
 S-PASS és un gestor de contrasenyes dissenyat per integrar-se de forma natural en la vida quotidiana dels usuaris. Segons paraules de Eduard Bantulà, una expert en ciberseguretat i usuari habitual de S-PASS:
 
-> L'objectiu principal de disseny de S-PASS és oferir 
+> "L'objectiu principal de disseny de S-PASS és oferir 
 una gestió de contrasenyes tan intuïtiva com segura.
 > La idea és que qualsevol persona pugui utilitzar S-PASS
 > per gestionar les seves contrasenyes de manera eficient, 
 sense necessitat de tenir coneixements tècnics.
 > El gestor s'encarrega de tot, i la gestió de contrasenyes 
 és tan senzilla i transparent que els usuaris ni tan sols 
-noten que estan emprant mesures de seguretat avançades.
+noten que estan emprant mesures de seguretat avançades."
 
 ## Instal·lació
 Per executar S-PASS localment, necessites tenir Python i Django instal·lats al teu sistema. Aquí tens els passos per configurar el projecte:
