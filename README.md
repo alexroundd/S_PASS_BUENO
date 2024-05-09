@@ -12,11 +12,6 @@ S-PASS és un gestor de contrasenyes segur dissenyat per proporcionar un emmagat
 - **Interfície Intuïtiva**: Dissenyada per ser fàcil d'usar, facilitant la gestió de contrasenyes per a tots els usuaris, independentment del seu nivell tecnològic.
 - **Autenticació de Dos Factors (2FA)**: Afegeix una capa extra de seguretat verificant la teva identitat mitjançant dos mètodes diferents.
 
-<div align="center">
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDd5a2Q1amx4OWl1eXBsbGxjM2w1OGkxd2hmazFhZTdjMnJ2d3IwbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bKj0qEKTVBdF2o5Dgn/giphy.gif"
-</div>
-    
-![GIF cyber](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbDd5a2Q1amx4OWl1eXBsbGxjM2w1OGkxd2hmazFhZTdjMnJ2d3IwbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/bKj0qEKTVBdF2o5Dgn/giphy.gif)
 
 S-PASS és un gestor de contrasenyes dissenyat per integrar-se de forma natural en la vida quotidiana dels usuaris. Segons paraules de Eduard Bantulà, una expert en ciberseguretat i usuari habitual de S-PASS:
 
