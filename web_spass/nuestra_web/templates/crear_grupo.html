@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Grupo</title>
+</head>
+<body>
+    <h1>Crear Grupo</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo">
+        <button type="submit">Crear</button>
+    </form>
+</body>
+</html>

@@ -146,3 +146,7 @@ ul li {
 .login {
     margin-top: 30vh;
 }
+
+.alert-success{
+    display: none;
+}

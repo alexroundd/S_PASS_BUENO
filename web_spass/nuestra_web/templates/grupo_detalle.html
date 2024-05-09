@@ -36,7 +36,7 @@
                 <li><a class="btn btn-outline-light" href="{% url 'home' %}">Home</a></li>
                 {% endif %}
                 {% if not request.resolver_match.url_name == 'agregar_entrada' %}
-                <li><a class="btn btn-outline-light" href="{% url 'agregar_contenido' %}">Agregar Nueva Entrada</a></li>
+                <li><a class="btn btn-outline-light" href="{% url 'agregar_entrada' %}">Agregar nueva entrada</a></li>
                 {% endif %}
                 
                 {% endif %}
@@ -65,6 +65,11 @@
             </div>
         {% endfor %}
         {% endif %}
+        <h1>{{ grupo.titulo }}</h1>
+        <form action="{% url 'eliminar_grupo' grupo.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Eliminar</button>
+        </form>
 
     </header>
 
@@ -101,25 +106,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for contenido in contenidos %}
-                            
+                            {% for entrada in entradas %}
+
                             <tr>
-                                <td> {{ contenido.titulo }}</td>
-                                <td>{{ contenido.username }}</td>
-                                <td><input type="password" value="{{ contenido.contraseña }}" id="ShowPassword_{{forloop.counter}}" style="border: none;
+                                <td> {{ entrada.titulo }}</td>
+                                <td>{{ entrada.username }}</td>
+                                <td><input type="password" value="{{ entrada.contraseña_encriptada }}" id="ShowPassword_{{forloop.counter}}" style="border: none;
                                     background: none;">
                                     <img src="https://i.ibb.co/j5RGrWR/open-eye.png" alt="Mostrar ContraseÃ±a" id="eyeToggle_{{forloop.counter}}" onclick="togglePassword('ShowPassword_{{forloop.counter}}', 'eyeToggle_{{forloop.counter}}')" style="cursor: pointer;filter: invert();"/>
                                 </td>
-                                <td>{{ contenido.calidad_contraseña }}</td>
-                                <td><a href="{{ contenido.link }}">{{ contenido.link|slice:":25" }}</a></td>
+                                <td>{{ entrada.calidad }}</td>
+                                <td><a href="{{ entrada.url }}">{{ entrada.url|slice:":25" }}</a></td>
                             </tr>
 
                             {% endfor %}
                         </tbody>
 
                     </table>
-                
-                    
+                                   
             </div>
 
         </div>
@@ -156,3 +160,7 @@
 
 </body>
 </html>
+
+
+
+

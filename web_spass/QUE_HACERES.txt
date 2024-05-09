@@ -5,3 +5,7 @@ configurar la calidad de la contraseña
 reorganizar paginas, login, register, home...
 hacer el diseño del register y del login
 no funciona ver mas en las entradas
+
+CAMBIAR IDIOMA A CATALAN
+
+ahora me gustaria que me dieras el codigo para crear un formulario y poder agregar este contenido desde una pagina nueva, lo que si es que me gustaria especificarte varias cosas, que me pida repetir la contraseña para ver si coinciden 
