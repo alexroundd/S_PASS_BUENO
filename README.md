@@ -13,7 +13,9 @@ S-PASS és un gestor de contrasenyes segur dissenyat per proporcionar un emmagat
 - **Autenticació de Dos Factors (2FA)**: Afegeix una capa extra de seguretat verificant la teva identitat mitjançant dos mètodes diferents.
 
 
+
 S-PASS és un gestor de contrasenyes dissenyat per integrar-se de forma natural en la vida quotidiana dels usuaris. Segons paraules de Eduard Bantulà, una expert en ciberseguretat i usuari habitual de S-PASS:
+
 
 > "L'objectiu principal de disseny de S-PASS és oferir 
 una gestió de contrasenyes tan intuïtiva com segura.
@@ -24,7 +26,10 @@ sense necessitat de tenir coneixements tècnics.
 és tan senzilla i transparent que els usuaris ni tan sols 
 noten que estan emprant mesures de seguretat avançades."
 
+
+
 ## Instal·lació
+
 Per executar S-PASS localment, necessites tenir Python i Django instal·lats al teu sistema. Aquí tens els passos per configurar el projecte:
 
 ```sh
@@ -42,6 +47,7 @@ cd s-pass
 docker build -t tu-usuario/s-pass .
 docker run -d -p 8000:8000 tu-usuario/s-pass
 ```
+
 
 Llicència
 MIT
