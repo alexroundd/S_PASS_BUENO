@@ -42,4 +42,6 @@ Llicència
 MIT
 
 Free Software, Hell Yeah!
+
+
 ![Logo de OpenAI](https://static.wikia.nocookie.net/marisqueria/images/1/19/Donpollo.jpeg/revision/latest?cb=20230105232639&path-prefix=es)
