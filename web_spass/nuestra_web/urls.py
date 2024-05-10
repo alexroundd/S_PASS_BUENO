@@ -21,7 +21,7 @@ urlpatterns = [
     path('grupo/<int:grupo_id>/', grupo_detalle, name='grupo_detalle'),
     
 
-    path('contentadduser/', grupo_contentadduser, name='grupo_contentadduser'),
+    path('grupo_contentadduser/', grupo_contentadduser, name='grupo_contentadduser'),
 
 
     path('agregar_contenido/', agregar_contenido, name='agregar_contenido'),

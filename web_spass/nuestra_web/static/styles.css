@@ -98,22 +98,22 @@ main {
 
 .columna_biblioteca {
     flex: 1 1 25%;
-    margin: 2vw;
+    margin: 3vh 1vh 0vh 2vw;
     background-color: white;
-    border-radius: 0.2em;
+    border-radius: 1.5em;
     text-align: center;
     color: black;
-    padding: 2.5em;
+    padding: 3em;
 }
 
 .columna_entradas {
     flex: 1 1 75%;
-    margin: 2vw;
-    border-radius: 0.2em;
+    margin: 3vh 2vh 0vh 1vw;
+    border-radius: 1.5em;
     text-align: center;
     color: black;
     background: white;
-    padding: 2.5em;
+    padding: 3em;
 }
 
 
@@ -176,10 +176,19 @@ ul li {
     margin: 0vh 0vh 3vh 0vh;
 }
 
-#crear_grupo{
+.botones_biblioteca{
     margin-bottom: 3vh;
+}
+
+
+#crear_grupo{
+    margin-right: 0.5em;
 
 }
 
+
+#grupo_contentadduser{
+    margin-left: 0.5em;
+}
 
 

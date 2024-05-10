@@ -27,8 +27,6 @@ class RegisterForm(UserCreationForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Registrarse', css_class='btn btn-success'))
 
-
-
 class ContenidoForm(forms.ModelForm):
     contraseña_confirmacion = forms.CharField(widget=forms.PasswordInput)
 

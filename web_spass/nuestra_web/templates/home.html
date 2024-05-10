@@ -75,13 +75,17 @@
             <h3 class="texto_home">Bienvenido a S-PASS, tu gestor de contraseñas de confianza</h3>
         </div>
         
-        <br><br>
         
         <div class="columnass">
 
             <div class="columna_biblioteca ">
                 <h2 class="biblioteca">Biblioteca</h2>
-                <a class="btn btn-outline-secondary" id="crear_grupo" href="{% url 'crear_grupo' %}">Crear grupo</a>
+                <div class="botones_biblioteca">
+                    <a class="btn btn-outline-secondary" id="crear_grupo" href="{% url 'crear_grupo' %}">Crear grupo</a>
+                    <a class="btn btn-outline-secondary" id="grupo_contentadduser" href="{% url 'grupo_contentadduser' %}">Afegir contingut al grup</a>
+                </div>
+
+
                 <ul class="grups">
                 {% for grupo in grupos %}
                     <li><a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'grupo_detalle' grupo.id %}">{{ grupo.titulo }}</a></li>

@@ -56,15 +56,12 @@ def home(request):
     }
     return render(request, 'home.html',context=context)
 
-
-
 def configuracion_contraseñas(request):
     return render(request, 'configuracion_contraseñas.html')
 
 def logoutView(request):
     logout(request) 
     return redirect('login')  # Redirige a la página de inicio de sesión después de cerrar sesión
-
 
 def crear_grupo(request):
     if not request.user.is_authenticated:
@@ -81,8 +78,6 @@ def eliminar_grupo(request, grupo_id):
     grupo = Grupo.objects.get(id=grupo_id)
     grupo.delete()
     return redirect('home')
-
-
 
 def grupo_contentadduser(request):
     if not request.user.is_authenticated:
@@ -104,20 +99,6 @@ def grupo_contentadduser(request):
 
     else:
         return render(request, 'agregar_grupo.html', {'grupos': grupos, 'contenidos': contenidos})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 def grupo_detalle(request, grupo_id):
     grupo = get_object_or_404(Grupo, id=grupo_id)
@@ -141,7 +122,7 @@ def agregar_contenido(request):
         if form.is_valid():            
             Contenido.objects.create(propietario=request.user,titulo=titulo_POST_VALUE,username=username_POST_VALUE,contraseña=contraseña_POST_VALUE,link=link_POST_VALUE).save()
             
-            return redirect('/home')  
+            return redirect('home')  
         else:
             if contraseña_POST_VALUE != contraseña_confirmacion_POST_VALUE:
                 return render(request, 'agregar_contenido.html', {'form': form, 'error': 'Las contraseñas no coinciden'}) 
@@ -150,7 +131,6 @@ def agregar_contenido(request):
 
     else:
         return render(request, 'agregar_contenido.html', {'form': form}) 
-
 
 def generar_contraseña(length, uppercase, lowercase, numbers, special):
     characters = ''
