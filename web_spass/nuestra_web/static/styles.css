@@ -150,3 +150,36 @@ ul li {
 .alert-success{
     display: none;
 }
+
+.bloque_titulo{
+    margin-top: 5vh;
+
+}
+
+.texto_home {
+    text-align: center;
+}
+
+
+/* GRUPS DE BIBLIOTECA */
+
+.grups {
+    padding: 0;
+    text-align: left;
+}
+
+.grups li {
+    margin-bottom: 1vh;
+}
+
+.biblioteca{
+    margin: 0vh 0vh 3vh 0vh;
+}
+
+#crear_grupo{
+    margin-bottom: 3vh;
+
+}
+
+
+

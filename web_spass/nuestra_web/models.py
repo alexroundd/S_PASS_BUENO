@@ -2,48 +2,10 @@ from django.db import models
 from django.contrib.auth.models import User
 from cryptography.fernet import Fernet
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser
 from cryptography.fernet import Fernet
 from django.core.validators import MinLengthValidator
 
 # Create your models here.
-
-
-
-
-def encriptar_contraseñas(contraseña):
-    cifrador = Fernet(settings.CLAVE_ENCRIPTACION)
-    return cifrador.encrypt(contraseña.encode()).decode()
-
-def desencriptar_contraseña(contraseña_encriptada):
-    cifrador = Fernet(settings.CLAVE_ENCRIPTACION)
-    return cifrador.decrypt(contraseña_encriptada.encode()).decode()
-
-class Entrada(models.Model):
-    titulo = models.CharField(max_length=100)
-    username = models.CharField(max_length=100)
-    contraseña_encriptada = models.CharField(max_length=255)  # Se almacenará la contraseña encriptada
-    calidad = models.CharField(max_length=50)
-    url = models.URLField(max_length=200)
-    
-    def __str__(self):
-        return self.titulo
-    
-    def save(self, *args, **kwargs):
-        # Antes de guardar, encriptar la contraseña
-        self.contraseña_encriptada = encriptar_contraseñas(self.contraseña_encriptada)
-        super().save(*args, **kwargs)
-    
-    def obtener_contraseña(self):
-        # Al obtener la contraseña, desencriptarla
-        return desencriptar_contraseña(self.contraseña_encriptada)
-    
-class Grupo(models.Model):
-    titulo = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.titulo
-    
 
 class Contenido(models.Model):
     TITULO_CHOICES = [
@@ -57,6 +19,8 @@ class Contenido(models.Model):
     contraseña = models.CharField(max_length=100, default='', validators=[MinLengthValidator(8)])
     calidad_contraseña = models.CharField(max_length=10, choices=TITULO_CHOICES, default='Baja')
     link = models.CharField(max_length=200, null=True) # Puedes cambiar el tipo de campo si necesitas algo más específico
+    propietario = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
+
 
     def __str__(self):
         return self.titulo
@@ -82,4 +46,14 @@ class Contenido(models.Model):
         self.calcular_calidad_contraseña()
         super(Contenido, self).save(*args, **kwargs)
 
+
+
+    
+class Grupo(models.Model):
+    titulo = models.CharField(max_length=100)
+    contenido_del_grupo = models.ManyToManyField(Contenido)
+    propietario = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
+    def __str__(self):
+        return self.titulo
+    
 

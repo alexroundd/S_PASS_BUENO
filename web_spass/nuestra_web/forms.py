@@ -27,24 +27,7 @@ class RegisterForm(UserCreationForm):
         self.helper.form_method = 'post'
         self.helper.add_input(Submit('submit', 'Registrarse', css_class='btn btn-success'))
 
-class EntradaForm(forms.ModelForm):
-    contraseña = forms.CharField(widget=forms.PasswordInput(), label='Contraseña')
-    repetir_contraseña = forms.CharField(widget=forms.PasswordInput(), label='Repetir Contraseña')
 
-    class Meta:
-        model = Entrada
-        fields = ['titulo', 'username', 'contraseña', 'calidad', 'url']
-
-    def clean(self):
-        cleaned_data = super().clean()
-        contraseña = cleaned_data.get('contraseña')
-        repetir_contraseña = cleaned_data.get('repetir_contraseña')
-
-        # Verificar que las contraseñas coincidan
-        if contraseña and repetir_contraseña and contraseña != repetir_contraseña:
-            raise forms.ValidationError('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.')
-
-        return cleaned_data
 
 class ContenidoForm(forms.ModelForm):
     contraseña_confirmacion = forms.CharField(widget=forms.PasswordInput)
@@ -70,3 +53,4 @@ class PasswordOptionsForm(forms.Form):
     lowercase = forms.BooleanField(label='Incluir minúsculas', required=False, initial=True)
     numbers = forms.BooleanField(label='Incluir números', required=False, initial=True)
     special = forms.BooleanField(label='Incluir caracteres especiales', required=False, initial=True)
+    

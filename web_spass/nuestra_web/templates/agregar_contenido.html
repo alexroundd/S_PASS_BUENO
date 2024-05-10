@@ -5,7 +5,7 @@
 <div class="entradas">
     <div class="card">
         <div class="card-body">
-            <h3>Rellene todos los campos para agregar una nueva entrada y poder utilizarla</h3>
+            <h3>Ompli tots els camps per afegir una nova entrada i poder utilitzar-la</h3>
             <br>
             <form method="post">
                 {% csrf_token %}
@@ -15,17 +15,13 @@
                 {{ form.contraseña_confirmacion | as_crispy_field}}
                 {{ form.link | as_crispy_field}}
                 <button class="btn btn-secondary" type="submit">Guardar</button>
-                <a class="btn btn-danger" href="{% url 'home' %}">Cancelar</a>
-                <a class="btn btn-secondary" href="{% url 'generador' %}">generar contraseña</a>
+                <a class="btn btn-danger" href="{% url 'home' %}">Cancel·la</a>
+                <a class="btn btn-secondary" href="{% url 'generador' %}">Generar contrasenya</a>
 
             </form>
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-danger" role="alert">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-            {% endif %}
+            <div class="alert alert-danger" role="alert">
+                <p>{{error}}</p>
+            </div>
         </div>
     </div>
 </div>

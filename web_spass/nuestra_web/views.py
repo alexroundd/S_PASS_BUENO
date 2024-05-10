@@ -44,49 +44,37 @@ def loginView(request):
     return render(request, 'login.html', {'form': form})
 
 def home(request):
-    grupos = Grupo.objects.all()
-    contenidos = Contenido.objects.all()
+    if not request.user.is_authenticated:
+        return redirect('/')
 
-    return render(request, 'home.html', {'grupos': grupos, 'contenidos': contenidos})
+    grupos = Grupo.objects.filter(propietario=request.user.id)
+    contenidos = Contenido.objects.filter(propietario=request.user.id)
 
-def agregar_entrada(request):
-    if request.method == 'POST':
-        form = EntradaForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'La entrada se ha agregado correctamente.')
-            return redirect('home')
-        else:
-            messages.error(request, 'Ha ocurrido un error al guardar la entrada. Por favor, revisa los datos e inténtalo de nuevo.')
-    else:
-        form = EntradaForm()
-    return render(request, 'agregar_entrada.html', {'form': form})
+    context = {
+          'grupos': grupos, 
+          'contenidos': contenidos,
+    }
+    return render(request, 'home.html',context=context)
+
+
 
 def configuracion_contraseñas(request):
     return render(request, 'configuracion_contraseñas.html')
-
-def my_view(request):
-    if request.user.is_authenticated:
-        # El usuario está autenticado, realiza las acciones necesarias
-        # Por ejemplo, muestra un mensaje de bienvenida, etc.
-        return render(request, 'loggedin.html')
-    else:
-        # El usuario no está autenticado, realiza acciones alternativas
-        return render(request, 'notloggedin.html')
 
 def logoutView(request):
     logout(request) 
     return redirect('login')  # Redirige a la página de inicio de sesión después de cerrar sesión
 
-def grupos(request):
-    grupos = Grupo.objects.all()
-    return render(request, 'home.html', {'grupos': grupos})
 
 def crear_grupo(request):
+    if not request.user.is_authenticated:
+        return redirect('/')
+    
     if request.method == 'POST':
         titulo = request.POST['titulo']
-        Grupo.objects.create(titulo=titulo)
+        Grupo.objects.create(titulo=titulo,propietario=request.user)
         return redirect('home')
+    
     return render(request, 'crear_grupo.html')
 
 def eliminar_grupo(request, grupo_id):
@@ -94,25 +82,75 @@ def eliminar_grupo(request, grupo_id):
     grupo.delete()
     return redirect('home')
 
+
+
+def grupo_contentadduser(request):
+    if not request.user.is_authenticated:
+        return redirect('/')
+    
+    grupos = Grupo.objects.filter(propietario=request.user.id)
+    contenidos = Contenido.objects.filter(propietario=request.user.id)
+
+    if request.method == 'POST':
+        grupos_POST_VALUE = request.POST.get('grupos', '')
+        contenido_POST_VALUE = request.POST.getlist('contenido', '')
+
+        print(grupos_POST_VALUE,contenido_POST_VALUE)
+
+        post_group_query = Grupo.objects.get(id=grupos_POST_VALUE)
+        for contenido in contenido_POST_VALUE:
+            post_group_query.contenido_del_grupo.add(contenido)
+        return redirect('/')
+
+    else:
+        return render(request, 'agregar_grupo.html', {'grupos': grupos, 'contenidos': contenidos})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def grupo_detalle(request, grupo_id):
     grupo = get_object_or_404(Grupo, id=grupo_id)
-    contenidos = Contenido.objects.all()
-
-    return render(request, 'grupo_detalle.html', {'grupo': grupo, 'contenidos': contenidos})
+    grupos = Grupo.objects.all()
+    
+    return render(request, 'grupo_detalle.html', {'grupo': grupo, 'grupos': grupos})
 
 def agregar_contenido(request):
+    form = ContenidoForm()
+    if not request.user.is_authenticated:
+        return redirect('/')
+    
     if request.method == 'POST':
         form = ContenidoForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')  # Reemplaza 'nombre_de_la_vista_que_muestra_el_contenido' con el nombre real de tu vista
-    else:
-        form = ContenidoForm()
-    return render(request, 'agregar_contenido.html', {'form': form})  # Reemplaza 'nombre_de_la_plantilla.html' con el nombre real de tu plantilla
+        titulo_POST_VALUE = request.POST.get('titulo', '')
+        username_POST_VALUE = request.POST.get('username', '')
+        contraseña_POST_VALUE = request.POST.get('contraseña', '')
+        contraseña_confirmacion_POST_VALUE = request.POST.get('contraseña_confirmacion', '')
+        link_POST_VALUE = request.POST.get('link', '')
+        
+        if form.is_valid():            
+            Contenido.objects.create(propietario=request.user,titulo=titulo_POST_VALUE,username=username_POST_VALUE,contraseña=contraseña_POST_VALUE,link=link_POST_VALUE).save()
+            
+            return redirect('/home')  
+        else:
+            if contraseña_POST_VALUE != contraseña_confirmacion_POST_VALUE:
+                return render(request, 'agregar_contenido.html', {'form': form, 'error': 'Las contraseñas no coinciden'}) 
+            else:
+                return render(request, 'agregar_contenido.html', {'form': form, 'error': 'Algo en el servidor a fallado, vuelve a intentarlo mas tarde.'}) 
 
-def contenido(request):
-    contenidos = Contenido.objects.all()
-    return render(request, 'contenido.html', {'contenidos': contenidos})
+    else:
+        return render(request, 'agregar_contenido.html', {'form': form}) 
+
 
 def generar_contraseña(length, uppercase, lowercase, numbers, special):
     characters = ''

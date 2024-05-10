@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+
+{% block contenido %}
+
+<form id="pop_up_form" method="post" target="_self">
+    {% csrf_token %}
+
+    <h1>Grupo<br></h1>
+    <select name="grupos" id="grupos">
+        {% for grupo in grupos %}
+        <option value="{{grupo.id}}">{{grupo.titulo}}</option>
+        {% endfor %}
+    </select>
+
+    <h1>Contenido<br></h1>
+    <select name="contenido" id="contenido" multiple>
+        {% for contenido in contenidos %}
+        <option value="{{contenido.id}}">{{contenido.titulo}}</option>
+        {% endfor %}
+    </select>
+<br>
+<button type="submit">Add Value</button>
+</form>
+
+{% endblock %}
+
+

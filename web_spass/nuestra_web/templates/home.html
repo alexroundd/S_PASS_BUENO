@@ -23,7 +23,7 @@
                 {% if not request.resolver_match.url_name == 'login' %}
                 {% if not request.resolver_match.url_name == 'register' %}
                 <li class="dropdown">
-                    <a href="#" class="btn btn-outline-light">Herramientas</a>
+                    <!-- <a href="#" class="btn btn-outline-light">Herramientas</a> -->
                     <ul class="dropdown-menu">
                         {% if not request.resolver_match.url_name == 'configuracion_contraseñas' %}
                         <li><a href="{% url 'configuracion_contraseñas' %}">Configuración de las contraseñas</a></li>
@@ -71,21 +71,22 @@
     <!-- Contenido principal -->
     <main>
         {% block contenido %}
-
-        <h3>Bienvenido a S-PASS, tu gestor de contraseñas de confianza</h3>
+        <div class="bloque_tiulo">
+            <h3 class="texto_home">Bienvenido a S-PASS, tu gestor de contraseñas de confianza</h3>
+        </div>
         
         <br><br>
         
         <div class="columnass">
 
             <div class="columna_biblioteca ">
-                <h2>Biblioteca</h2>
-                <ul>
+                <h2 class="biblioteca">Biblioteca</h2>
+                <a class="btn btn-outline-secondary" id="crear_grupo" href="{% url 'crear_grupo' %}">Crear grupo</a>
+                <ul class="grups">
                 {% for grupo in grupos %}
-                    <li><a class="btn btn-dark" href="{% url 'grupo_detalle' grupo.id %}">{{ grupo.titulo }}</a></li>
+                    <li><a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'grupo_detalle' grupo.id %}">{{ grupo.titulo }}</a></li>
                 {% endfor %}
                 </ul>
-                <a class="btn btn-outline-secondary" href="{% url 'crear_grupo' %}">Crear grupo</a>
             </div>
     
             <div class="columna_entradas">
@@ -93,11 +94,12 @@
                     <table id=example class=display style=width:100%>
                         <thead>
                             <tr>
-                                <th>Titulo</th>
-                                <th>Usuario</th>
-                                <th>ContraseÃ±a</th>
-                                <th>Calidad</th>
-                                <th>Link</th>
+                                <th class="parametros_contenido">Títol</th>
+                                <th class="parametros_contenido">Nom d'usuari</th>
+                                <th class="parametros_contenido">Contrasenya</th>
+                                <th class="parametros_contenido">Cualitat de la contrasenya</th>
+                                <th class="parametros_contenido">Link</th>
+                                
                             </tr>
                         </thead>
                         <tbody>
