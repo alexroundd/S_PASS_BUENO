@@ -33,8 +33,8 @@ noten que estan emprant mesures de seguretat avançades."
 Per executar S-PASS localment, necessites tenir Python i Django instal·lats al teu sistema. Aquí tens els passos per configurar el projecte:
 
 ```sh
-git clone https://github.com/tu-usuario/s-pass.git
-cd s-pass
+git clone https://github.com/alexroundd/S_PASS_BUENO
+cd S_PASS_BUENO/web_spass
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
