@@ -1,3 +1,4 @@
+
 /* BODY */
 
 body {
@@ -5,6 +6,15 @@ body {
     background: #292929;
     color: white;
 }
+
+.asteriskField {
+    display: none !important;
+}
+
+ul li {
+    list-style-type: none;
+}
+
 
 /* HEADER */
 
@@ -21,12 +31,6 @@ header{
     padding: 2.5vh;
 }
 
-main {
-    margin-top: 13vh;
-}
-
-/* LINKS Y BUSCADOR HEADER */
-
 .opciones_header {
     float: left;
 }
@@ -42,13 +46,7 @@ main {
     margin-right: 1vw;
     }
 
-/* TITULO AGREGAR NUEVA ENTRADA */
-
-.agregar_nueva{
-    margin: 0;
-}
-
-/* Estilos para el desplegable */
+/* Estilos para el desplegable (opciones header) */
 .dropdown {
     position: relative;
     display: inline-block;
@@ -90,10 +88,26 @@ main {
     margin: auto;
 }
 
-/* COLUMNAS DE HOME */
+/* MAIN */
+
+main{
+    margin-top: 15vh;
+}
+
+.texto_home {
+    text-align: center;
+}
+
+.alert-success{
+    display: none;
+}
+
+
+/* COLUMNAS DE HOME (main) */
 
 .columnass {
     display: flex;
+    min-height: 70vh;
 }
 
 .columna_biblioteca {
@@ -117,58 +131,14 @@ main {
 }
 
 
-.asteriskField {
-    display: none !important;
-}
+/* GRUPS DE BIBLIOTECA (main) */
 
-ul li {
-    list-style-type: none;
-}
-
-
-/* REGISTER */
-
-.register{
-    width: 40vw;
-    margin: auto;
-}
-
-.login{
-    width: 40vw;
-    margin: auto;
-}
-
-.card-body form > * {
-    margin-bottom: 2em; 
-}
-
-
-.login {
-    margin-top: 30vh;
-}
-
-.alert-success{
-    display: none;
-}
-
-.bloque_titulo{
-    margin-top: 5vh;
-
-}
-
-.texto_home {
-    text-align: center;
-}
-
-
-/* GRUPS DE BIBLIOTECA */
-
-.grups {
+.grupos {
     padding: 0;
     text-align: left;
 }
 
-.grups li {
+.grupos li {
     margin-bottom: 1vh;
 }
 
@@ -180,15 +150,139 @@ ul li {
     margin-bottom: 3vh;
 }
 
-
 #crear_grupo{
-    margin-right: 0.5em;
+    margin-bottom: 1em;
 
 }
-
 
 #grupo_contentadduser{
-    margin-left: 0.5em;
+    margin-bottom: 1em;
 }
+
+/* CREAR GRUPO */
+
+/* Estilos para el contenido principal */
+#contenidoPrincipal {
+    position: relative;
+    transition: opacity 0.3s ease; /* Transición suave para la opacidad */
+}
+
+/* Estilos para el formulario emergente */
+.popup-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    color: black;
+    padding: 3em; /* Ajusta el tamaño del padding para hacer el formulario más grande */
+    border-radius: 10px;
+    z-index: 9999; /* Asegura que el formulario esté en la parte superior */
+}
+
+/* Estilos para aplicar opacidad al contenido principal cuando el formulario emergente está activo */
+#contenidoPrincipal.popup-active {
+    opacity: 0.5;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+/* Estilos para el botón de cierre */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+/* TABLA CONTENIDO (main) */
+.tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 3em; /* Ajuste de margen superior */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2em; /* Espacio adicional entre la tabla y otros elementos */
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 1em; /* Reducción del espacio de relleno */
+    text-align: left;
+}
+
+th {
+    background-color: #333; /* Cambio de color de fondo */
+    color: white; /* Cambio de color de texto */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.contrasena-container {
+    position: relative;
+}
+
+.contrasena-input {
+    border: none;
+    background: none;
+    padding-right: 2em; /* Reducción del espacio de relleno */
+}
+
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 1em; /* Ajuste del espacio a la derecha */
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #333; /* Cambio de color del icono */
+}
+
+.bloque_contraseñas_entradas_home {
+    width: 21%;
+}
+
+.bloque_titulo_entradas_home{
+    width: 20%;
+    
+}
+
+/* REGISTER */
+
+.register{
+    width: 40vw;
+    margin: auto;
+    margin-top: 20vh;
+}
+
+
+/* LOGIN */
+
+.login{
+    width: 40vw;
+    margin: auto;
+    margin-top: 30vh;
+
+}
+
+.card-body form > * {
+    margin-bottom: 2em; 
+}
+
+/* AGREGAR CONTENIDO */
+
+.mensaje_error_agregar_contenido{
+    margin: 0;
+}
+
 
 

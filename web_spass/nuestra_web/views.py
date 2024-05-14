@@ -131,6 +131,12 @@ def agregar_contenido(request):
 
     else:
         return render(request, 'agregar_contenido.html', {'form': form}) 
+    
+def eliminar_elemento(request, contenido_id):
+    if request.method == 'POST':
+        item = Contenido.objects.get(pk=contenido_id)
+        item.delete()
+    return redirect('home')
 
 def generar_contraseña(length, uppercase, lowercase, numbers, special):
     characters = ''

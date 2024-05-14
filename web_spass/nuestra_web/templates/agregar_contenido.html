@@ -19,9 +19,11 @@
                 <a class="btn btn-secondary" href="{% url 'generador' %}">Generar contrasenya</a>
 
             </form>
-            <div class="alert alert-danger" role="alert">
-                <p>{{error}}</p>
-            </div>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    <p class="mensaje_error_agregar_contenido">{{ error }}</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 </div>

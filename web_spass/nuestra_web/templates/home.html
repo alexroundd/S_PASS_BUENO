@@ -52,7 +52,7 @@
 
         {% if user.is_authenticated %}
         <!-- Código para usuarios autenticados -->
-        <h2>Bienvenido, {{ user.username }}!</h2>
+        <h2>Bienvenido, {{ user.username }}! Acabas de acceder a S-Pass, tu gestor de contraseñas de confianza!</h2>
         {% else %}
         <!-- Código para usuarios no autenticados -->
         <h2>Por favor, inicia sesión para acceder al contenido</h2>
@@ -64,29 +64,41 @@
                 {{ message }}
             </div>
         {% endfor %}
-        {% endif %}
+        {% endif %}       
 
     </header>
 
     <!-- Contenido principal -->
     <main>
         {% block contenido %}
-        <div class="bloque_tiulo">
+        <!-- <div class="bloque_tiulo">
             <h3 class="texto_home">Bienvenido a S-PASS, tu gestor de contraseñas de confianza</h3>
+        </div> -->
+        
+        <div id="crearGrupoForm" class="popup-form" style="display: none;">
+            <button class="close-btn" onclick="togglePopup()">Cerrar</button>
+            <h1>Crear un grupo nuevo</h1>
+            <form id="crearGrupoForm" method="post" action="{% url 'crear_grupo' %}">
+                {% csrf_token %}
+                <label for="titulo">Título del grupo:</label>
+                <input type="text" id="titulo" name="titulo">
+                <button type="submit">Crear</button>
+            </form>
         </div>
         
-        
-        <div class="columnass">
+        <div class="columnass" id="contenidoPrincipal">
 
             <div class="columna_biblioteca ">
                 <h2 class="biblioteca">Biblioteca</h2>
                 <div class="botones_biblioteca">
-                    <a class="btn btn-outline-secondary" id="crear_grupo" href="{% url 'crear_grupo' %}">Crear grupo</a>
+                    <a class="btn btn-outline-secondary" id="crear_grupo" href="javascript:void(0);" onclick="togglePopup()">Crear grupo</a>
+
+
                     <a class="btn btn-outline-secondary" id="grupo_contentadduser" href="{% url 'grupo_contentadduser' %}">Afegir contingut al grup</a>
                 </div>
 
 
-                <ul class="grups">
+                <ul class="grupos">
                 {% for grupo in grupos %}
                     <li><a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'grupo_detalle' grupo.id %}">{{ grupo.titulo }}</a></li>
                 {% endfor %}
@@ -103,6 +115,8 @@
                                 <th class="parametros_contenido">Contrasenya</th>
                                 <th class="parametros_contenido">Cualitat de la contrasenya</th>
                                 <th class="parametros_contenido">Link</th>
+                                <th class="parametros_contenido"></th>
+
                                 
                             </tr>
                         </thead>
@@ -110,24 +124,27 @@
                             {% for contenido in contenidos %}
                             
                             <tr>
-                                <td> {{ contenido.titulo }}</td>
-                                <td>{{ contenido.username }}</td>
-                                <td><input type="password" value="{{ contenido.contraseña }}" id="ShowPassword_{{forloop.counter}}" style="border: none;
+                                <td class="bloque_titulo_entradas_home"> {{ contenido.titulo|slice:":20" }}</td>
+                                <td>{{ contenido.username|slice:":20" }}</td>
+                                <td class="bloque_contraseñas_entradas_home"><input type="password" value="{{ contenido.contraseña }}" id="ShowPassword_{{forloop.counter}}" style="border: none;
                                     background: none;">
                                     <img src="https://i.ibb.co/j5RGrWR/open-eye.png" alt="Mostrar ContraseÃ±a" id="eyeToggle_{{forloop.counter}}" onclick="togglePassword('ShowPassword_{{forloop.counter}}', 'eyeToggle_{{forloop.counter}}')" style="cursor: pointer;filter: invert();"/>
                                 </td>
                                 <td>{{ contenido.calidad_contraseña }}</td>
                                 <td><a href="{{ contenido.link }}">{{ contenido.link|slice:":25" }}</a></td>
+                                <td>
+                                    <form action="{% url 'eliminar_elemento' contenido.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Suprimir</button>
+                                    </form>
+                                </td>
                             </tr>
+
 
                             {% endfor %}
                         </tbody>
-
-                    </table>
-                
-                    
+                    </table>                 
             </div>
-
         </div>
 
         {% endblock %}
@@ -157,8 +174,32 @@
             }
         }
     </script>
-    <!-- Footer -->
-    <br>
+
+    <script>
+        function togglePopup(popupId) {
+            var popup = document.getElementById(popupId);
+            if (popup.style.display === "none") {
+                popup.style.display = "block";
+            } else {
+                popup.style.display = "none";
+            }
+        }
+    </script>
+
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("crearGrupoForm");
+            var contenidoPrincipal = document.getElementById("contenidoPrincipal");
+            if (popup.style.display === "none") {
+                popup.style.display = "block";
+                contenidoPrincipal.classList.add("popup-active");
+            } else {
+                popup.style.display = "none";
+                contenidoPrincipal.classList.remove("popup-active");
+            }
+        }
+    </script>
+    
 
 </body>
 </html>
