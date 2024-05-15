@@ -7,7 +7,7 @@ urlpatterns = [
     path('', home, name='home'),
     path('configuracion_contraseñas/', configuracion_contraseñas, name='configuracion_contraseñas'),
     path('register/', register, name='register'),
-    path('login/', loginView, name='login'),
+    # path('login/', loginView, name='login'),
     path('logout/', logoutView, name='logout'),
     path('crear_grupo/', crear_grupo, name='crear_grupo'),
     path('eliminar_grupo/<int:grupo_id>/', eliminar_grupo, name='eliminar_grupo'),
@@ -17,4 +17,11 @@ urlpatterns = [
     path('generador/', generador, name='generador'),
     path('eliminar/<int:contenido_id>/', eliminar_elemento, name='eliminar_elemento'),
     path('editar_contenido/<int:contenido_id>/', editar_contenido, name='editar_contenido'),
+
+
+    path('login/', login_view, name='login'),
+    path('two_factor/', two_factor_view, name='two_factor'),
+    
+
 ]
+

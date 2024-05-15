@@ -32,7 +32,7 @@ header{
 }
 
 .opciones_header {
-    float: left;
+    float: right;
 }
 
 .opciones_header ul {
@@ -138,9 +138,6 @@ main{
     text-align: left;
 }
 
-.grupos li {
-    margin-bottom: 1vh;
-}
 
 .biblioteca{
     margin: 0vh 0vh 3vh 0vh;
@@ -160,6 +157,22 @@ main{
 }
 
 /* CREAR GRUPO */
+
+#boton_grupo_nuevo{
+    margin-left: 0.5em;
+}
+
+.grupos_biblioteca {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.boton_eliminar_grupo {
+    margin-left: auto; /* Opcional, para asegurar que el botón siempre esté al extremo derecho */
+}
+
 
 /* Estilos para el contenido principal */
 #contenidoPrincipal {
@@ -198,10 +211,23 @@ main{
 
 
 
-
-
-
 /* TABLA CONTENIDO (main) */
+
+.header_tabla {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo_lista_entradas {
+    text-align: center;
+    flex: 1;
+}
+
+
+
+
+
 .tabla-contenedor {
     overflow-x: auto;
     margin-top: 3em; /* Ajuste de margen superior */
@@ -248,8 +274,6 @@ tr:nth-child(even) {
 }
 
 
-
-
 .bloque_contraseñas_entradas_home {
     width: 21%;
 }
@@ -287,5 +311,99 @@ tr:nth-child(even) {
     margin: 0;
 }
 
+
+/* AGREGAR CONTENIDO A GRUPO */
+
+#pop_up_form {
+    width: 40vw;
+    margin: auto;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pop_up_form h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#pop_up_form select {
+    width: 80%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* GENERADOR DE CONTRASEÑAS */
+
+.generador{
+    width: 40vw;
+    margin: auto;
+    margin-top: 23vh    
+}
+
+.card_generador{
+    padding: 2em;
+}
+
+
+/* Estilo para el overlay */
+#overlay {
+    display: none; /* Oculto inicialmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    z-index: 1000; /* Asegura que esté por encima del contenido principal */
+}
+
+/* Estilo para el passwordPopup */
+#passwordPopup {
+    display: none; /* Oculto inicialmente */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white; /* Fondo blanco */
+    color: black; /* Texto negro */
+    padding: 2em; /* Padding más amplio */
+    border-radius: 10px; /* Bordes redondeados */
+    z-index: 1001; /* Asegura que esté por encima del overlay */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+    width: auto; /* Ancho consistente con otros elementos */
+    text-align: center; /* Centra el texto */
+}
+
+/* Estilo para el contenido del passwordPopup */
+#passwordPopup #generatedPassword {
+    margin-bottom: 1em; /* Espacio entre la contraseña y los botones */
+    display: block; /* Asegura que el span ocupe todo el ancho disponible */
+    font-size: 1.2em; /* Tamaño de fuente más grande */
+    font-weight: bold; /* Texto en negrita */
+}
+
+/* Estilo para los botones del passwordPopup */
+#passwordPopup button {
+    padding: 0.5em 1em; /* Espaciado interno */
+    margin: 0.5em; /* Espaciado externo */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor de mano */
+    background-color: #333; /* Fondo oscuro */
+    color: white; /* Texto blanco */
+    transition: background-color 0.3s; /* Transición suave */
+}
+
+/* Estilo para el hover de los botones del passwordPopup */
+#passwordPopup button:hover {
+    background-color: #555; /* Color de fondo más claro al pasar el mouse */
+}
 
 

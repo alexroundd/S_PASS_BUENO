@@ -21,7 +21,7 @@
         </a>
         <h2 class="biblioteca">Biblioteca</h2>
         <div class="botones_biblioteca">
-            <a class="btn btn-outline-secondary" id="crear_grupo" href="javascript:void(0);" onclick="togglePopup()">Crear grupo</a>
+            <a class="btn btn-outline-secondary" id="crear_grupo" href="javascript:void(0);" onclick="togglePopup()">Crear grup</a>
 
 
             <a class="btn btn-outline-secondary" id="grupo_contentadduser" href="{% url 'grupo_contentadduser' %}">Afegir contingut al grup</a>
@@ -45,9 +45,9 @@
 
         <div class="header_tabla">
             {% if not request.resolver_match.url_name == 'agregar_entrada' %}
-            <a class="btn btn-secondary agregar_entrada_boton" href="{% url 'agregar_contenido' %}">Agregar Nueva Entrada</a>
+            <a class="btn btn-secondary agregar_entrada_boton" href="{% url 'agregar_contenido' %}">Afegeix una nova entrada</a>
             {% endif %}
-            <h2 class="titulo_lista_entradas">Lista de Entradas</h2>
+            <h2 class="titulo_lista_entradas">Llista d'entrades</h2>
         </div>
             <table id=example class=display style=width:100%>
                 <thead>

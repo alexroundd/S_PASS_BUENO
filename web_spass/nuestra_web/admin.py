@@ -5,3 +5,4 @@ from .models import *
 
 admin.site.register(Grupo)
 admin.site.register(Contenido)
+admin.site.register(TwoFactorCode)

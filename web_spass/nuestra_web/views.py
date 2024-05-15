@@ -27,21 +27,21 @@ def register(request):
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
-def loginView(request):
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('home') 
-            else:
-                messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
-    else:
-        form = LoginForm()
-    return render(request, 'login.html', {'form': form})
+# def loginView(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             password = form.cleaned_data['password']
+#             user = authenticate(request, username=username, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 return redirect('home') 
+#             else:
+#                 messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
+#     else:
+#         form = LoginForm()
+#     return render(request, 'login.html', {'form': form})
 
 def home(request):
     if not request.user.is_authenticated:
@@ -179,15 +179,89 @@ def generador(request):
             if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                             return JsonResponse({'password': password})
             else:
-                            # Para solicitudes no AJAX, puedes decidir qué hacer,
-                            # por ejemplo, redirigir o manejar de otra manera.
                             return render(request, 'password_result.html', {'password': password})
         else:
             if request.headers.get('x-requested-with') == 'XMLHttpRequest':
                             return JsonResponse({'error': 'Formulario inválido.'}, status=400)
             else:
-                            # Manejar errores de formulario para solicitudes no AJAX
                             return render(request, 'password_form.html', {'form': form})
     else:
                     form = PasswordOptionsForm()
                     return render(request, 'password_form.html', {'form': form})
+    
+
+
+
+
+
+
+
+
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.core.mail import send_mail, BadHeaderError
+from .forms import LoginForm, TwoFactorForm
+from .models import TwoFactorCode
+import random
+from django.contrib.auth.models import User
+
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                request.session['pre_2fa_user_id'] = user.id
+                code = random.randint(100000, 999999)
+                TwoFactorCode.objects.create(user=user, code=code)
+                try:
+                    subject = 'Tu código de verificación 2FA'
+                    message = render_to_string('email_template.html', {
+                        'username': user.username,
+                        'code': code,
+                    })
+                    email = EmailMessage(subject, message, 'alexrsen100@gmail.com', [user.email])
+                    email.content_subtype = 'html'  # Para enviar como HTML
+                    email.send()
+                    return redirect('two_factor')
+                except BadHeaderError:
+                    messages.error(request, 'Invalid header found.')
+                except Exception as e:
+                    messages.error(request, f'Error enviando correo: {e}')
+            else:
+                messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
+        else:
+            messages.error(request, 'Por favor, corrija los errores en el formulario.')
+    else:
+        if request.user.is_authenticated:
+            return redirect('home')
+        form = LoginForm()
+    return render(request, 'login.html', {'form': form})
+
+
+def two_factor_view(request):
+    if request.method == 'POST':
+        form = TwoFactorForm(request.POST)
+        if form.is_valid():
+            code = form.cleaned_data['code']
+            user_id = request.session.get('pre_2fa_user_id')
+            if user_id:
+                user = User.objects.get(id=user_id)
+                if TwoFactorCode.objects.filter(user=user, code=code).exists():
+                    login(request, user)
+                    return redirect('home')
+                else:
+                    messages.error(request, 'Codi introduït incorrecte')
+            else:
+                messages.error(request, 'Sesión no encontrada.')
+    else:
+        form = TwoFactorForm()
+    return render(request, 'two_factor.html', {'form': form})
+
+

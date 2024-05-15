@@ -7,6 +7,8 @@
         <div class="card-body">
             <h3>Ompli tots els camps per afegir una nova entrada i poder utilitzar-la</h3>
             <br>
+            <p>Pots generar una contraseña automaticament amb la següent opció:</p>
+            <a class="btn btn-secondary" href="{% url 'generador' %}" style="margin-bottom: 2em;">Generar contrasenya</a>
             <form method="post">
                 {% csrf_token %}
                 {{ form.titulo | as_crispy_field}}
@@ -16,7 +18,6 @@
                 {{ form.link | as_crispy_field}}
                 <button class="btn btn-secondary" type="submit">Guardar</button>
                 <a class="btn btn-danger" href="{% url 'home' %}">Cancel·la</a>
-                <a class="btn btn-secondary" href="{% url 'generador' %}">Generar contrasenya</a>
 
             </form>
             {% if error %}

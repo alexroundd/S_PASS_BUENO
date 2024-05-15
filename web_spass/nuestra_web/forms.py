@@ -7,15 +7,12 @@ from crispy_forms.layout import Submit
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.hashers import make_password, check_password
 
-class LoginForm(forms.Form):
-    username = forms.CharField(label="Nombre de usuario")
-    password = forms.CharField(label="Contraseña", widget=forms.PasswordInput)
 
 class RegisterForm(UserCreationForm):
-    username = forms.CharField(label="Nombre de usuario", required=True)
-    email = forms.EmailField(label="Correo electrónico", required=True)
-    password1 = forms.CharField(label="Contraseña", widget=forms.PasswordInput, required=True)
-    password2 = forms.CharField(label="Confirmar contraseña", widget=forms.PasswordInput, required=True)
+    username = forms.CharField(label="Nom d'usuari", required=True)
+    email = forms.EmailField(label="Correu electronic", required=True)
+    password1 = forms.CharField(label="Contrasenya", widget=forms.PasswordInput, required=True)
+    password2 = forms.CharField(label="Confirmar contrasenya", widget=forms.PasswordInput, required=True)
 
     class Meta:
         model = User
@@ -52,3 +49,10 @@ class PasswordOptionsForm(forms.Form):
     numbers = forms.BooleanField(label='Incluir números', required=False, initial=True)
     special = forms.BooleanField(label='Incluir caracteres especiales', required=False, initial=True)
     
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label="Nom d'usuari")
+    password = forms.CharField(label="Contrasenya", widget=forms.PasswordInput)
+
+class TwoFactorForm(forms.Form):
+    code = forms.CharField(label="Código d'autentificació")

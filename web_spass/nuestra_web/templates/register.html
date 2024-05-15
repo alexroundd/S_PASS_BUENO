@@ -8,12 +8,12 @@
 <div class="register">
     <div class="card">
         <div class="card-body">
-            <h2>Registrate</h2>
+            <h2>Registrar-se</h2>
             <br>
             <form method="post">
                 {% csrf_token %}
                 {% crispy form %}
-                <a class="btn btn-secondary" type="submit" href="{% url 'login' %}" >Ya tienes una cuenta</a>
+                <a class="btn btn-secondary" type="submit" href="{% url 'login' %}" >Iniciar sessió</a>
             </form>
         </div>  
     </div>

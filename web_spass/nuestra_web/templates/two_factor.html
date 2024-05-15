@@ -2,26 +2,21 @@
 {% load crispy_forms_tags %}
 
 {% block contenido %}
-
-
-
 <div class="login">
     <div class="card" id="login-card">
         <div class="card-body">
-            <h2>Inici de sessió</h2>
-
+            <h2>Verificació en dos passos</h2>
             <form method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <div class="botones_login">
-                    <button class="btn btn-success" type="submit">Iniciar sessió</button>
-                    <a class="btn btn-secondary" type="submit" href="{% url 'register' %}" >Registrar-se</a>
+                    <button class="btn btn-success" type="submit">Verificar</button>
                 </div>
             </form>
-            
+
             {% if messages %}
                 {% for message in messages %}
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger alert-{{ message.tags }}" role="alert">
                         {{ message }}
                     </div>
                 {% endfor %}
@@ -29,9 +24,4 @@
         </div>  
     </div>
 </div>
-
-
-
-
-
 {% endblock %}
