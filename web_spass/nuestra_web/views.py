@@ -132,6 +132,20 @@ def agregar_contenido(request):
     else:
         return render(request, 'agregar_contenido.html', {'form': form}) 
     
+def editar_contenido(request, contenido_id):
+    contenido = get_object_or_404(Contenido, id=contenido_id)
+    if request.method == 'POST':
+        form = ContenidoForm(request.POST, instance=contenido)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            # Handle form validation errors
+            messages.error(request, 'Error al guardar los cambios')
+    else:
+        form = ContenidoForm(instance=contenido)
+    return render(request, 'editar_contenido.html', {'form': form})
+    
 def eliminar_elemento(request, contenido_id):
     if request.method == 'POST':
         item = Contenido.objects.get(pk=contenido_id)

@@ -76,7 +76,7 @@
         </div> -->
         
         <div id="crearGrupoForm" class="popup-form" style="display: none;">
-            <button class="close-btn" onclick="togglePopup()">Cerrar</button>
+            <button class="close-btn" onclick="togglePopup()">X</button>
             <h1>Crear un grupo nuevo</h1>
             <form id="crearGrupoForm" method="post" action="{% url 'crear_grupo' %}">
                 {% csrf_token %}
@@ -116,6 +116,7 @@
                                 <th class="parametros_contenido">Cualitat de la contrasenya</th>
                                 <th class="parametros_contenido">Link</th>
                                 <th class="parametros_contenido"></th>
+                                <th class="parametros_contenido"></th>
 
                                 
                             </tr>
@@ -130,14 +131,18 @@
                                     background: none;">
                                     <img src="https://i.ibb.co/j5RGrWR/open-eye.png" alt="Mostrar ContraseÃ±a" id="eyeToggle_{{forloop.counter}}" onclick="togglePassword('ShowPassword_{{forloop.counter}}', 'eyeToggle_{{forloop.counter}}')" style="cursor: pointer;filter: invert();"/>
                                 </td>
-                                <td>{{ contenido.calidad_contraseña }}</td>
+                                <td class="bloque_calidad_entradas_home">{{ contenido.calidad_contraseña }}</td>
                                 <td><a href="{{ contenido.link }}">{{ contenido.link|slice:":25" }}</a></td>
+                                <td>
+                                    <a class="btn btn-secondary" href="{% url 'editar_contenido' contenido.id %}">Editar</a>
+                                </td>
                                 <td>
                                     <form action="{% url 'eliminar_elemento' contenido.id %}" method="post">
                                         {% csrf_token %}
                                         <button class="btn btn-danger" type="submit">Suprimir</button>
                                     </form>
                                 </td>
+
                             </tr>
 
 

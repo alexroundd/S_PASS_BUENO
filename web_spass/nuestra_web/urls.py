@@ -16,4 +16,5 @@ urlpatterns = [
     path('agregar_contenido/', agregar_contenido, name='agregar_contenido'),
     path('generador/', generador, name='generador'),
     path('eliminar/<int:contenido_id>/', eliminar_elemento, name='eliminar_elemento'),
+    path('editar_contenido/<int:contenido_id>/', editar_contenido, name='editar_contenido'),
 ]

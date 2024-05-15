@@ -1,0 +1,36 @@
+{% extends 'home.html' %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+<div class="entradas">
+    <div class="card">
+        <div class="card-body">
+            <h2>Editar contenido</h2>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.titulo | as_crispy_field}}
+                {{ form.username | as_crispy_field}}
+                {{ form.contraseña | as_crispy_field }}
+                {{ form.contraseña_confirmacion | as_crispy_field}}
+                {{ form.link | as_crispy_field}}
+                <button class="btn btn-secondary" type="submit">Guardar</button>
+                <a class="btn btn-danger" href="{% url 'home' %}">Cancel·la</a>
+                <a class="btn btn-secondary" href="{% url 'generador' %}">Generar contrasenya</a>
+
+                {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                    <p class="mensaje_error_agregar_contenido">{{ message }}</p>
+                    {% endfor %}
+
+                </div>
+                {% endif %}
+
+            </form>
+        </div>  
+    </div>
+</div>
+
+{% endblock %}

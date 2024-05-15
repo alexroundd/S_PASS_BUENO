@@ -182,7 +182,7 @@ main{
 
 /* Estilos para aplicar opacidad al contenido principal cuando el formulario emergente está activo */
 #contenidoPrincipal.popup-active {
-    opacity: 0.5;
+    opacity: 25%;
     background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
 }
 
@@ -247,12 +247,15 @@ tr:nth-child(even) {
     color: #333; /* Cambio de color del icono */
 }
 
+
+
+
 .bloque_contraseñas_entradas_home {
     width: 21%;
 }
 
-.bloque_titulo_entradas_home{
-    width: 20%;
+.bloque_calidad_entradas_home {
+    width: 15%;
     
 }
 
