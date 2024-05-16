@@ -16,8 +16,11 @@
                 {{ form.contraseña | as_crispy_field }}
                 {{ form.contraseña_confirmacion | as_crispy_field}}
                 {{ form.link | as_crispy_field}}
-                <button class="btn btn-secondary" type="submit">Guardar</button>
-                <a class="btn btn-danger" href="{% url 'home' %}">Cancel·la</a>
+                <div style="margin-bottom: 1em;">
+                    <button class="btn btn-secondary" type="submit">Guardar</button>
+                    <a class="btn btn-danger" href="{% url 'home' %}">Cancel·la</a>
+                </div>
+
 
             </form>
             {% if error %}

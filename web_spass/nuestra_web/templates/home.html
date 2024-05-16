@@ -38,11 +38,9 @@
         </nav>
 
         {% if user.is_authenticated %}
-        <!-- Código para usuarios autenticados -->
         <h3>Benvingut, {{ user.username }}! Acaba d'accedir a S-Pass, el seu gestor de contrasenyes de confiança!</h3>
         <h3></h3>
         {% else %}
-        <!-- Código para usuarios no autenticados -->
         <h2>Inicii sessió per accedir al contingut</h2>
         {% endif %}
 
@@ -56,7 +54,6 @@
 
     </header>
 
-    <!-- Contenido principal -->
     <main>
         {% block contenido %}
 
@@ -173,7 +170,7 @@
                 img.src = "https://i.ibb.co/HV4Zqhf/closed-eye.png";
             } else {
                 input.type = "password";
-                img.src = "https://i.ibb.co/j5RGrWR/open-eye.png"; // Cambia a la imagen de ojo abierto
+                img.src = "https://i.ibb.co/j5RGrWR/open-eye.png";
 
             }
         }

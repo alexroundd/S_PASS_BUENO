@@ -120,6 +120,34 @@ main{
     padding: 3em;
 }
 
+
+.columna_biblioteca_grups{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1 1 25%;
+    margin: 3vh 1vh 0vh 2vw;
+    background-color: white;
+    border-radius: 1.5em;
+    text-align: center;
+    color: black;
+    padding: 3em;
+    padding-top: 7.5em; 
+    
+}
+
+.volver-home {
+    position: absolute;
+    top: 2em;
+    left: 2em;
+}
+
+.boton-suprimir {
+    align-self: center; 
+    margin-top: auto; 
+}
+
 .columna_entradas {
     flex: 1 1 75%;
     margin: 3vh 2vh 0vh 1vw;
@@ -170,17 +198,15 @@ main{
 }
 
 .boton_eliminar_grupo {
-    margin-left: auto; /* Opcional, para asegurar que el botón siempre esté al extremo derecho */
+    margin-left: auto; 
 }
 
 
-/* Estilos para el contenido principal */
 #contenidoPrincipal {
     position: relative;
-    transition: opacity 0.3s ease; /* Transición suave para la opacidad */
+    transition: opacity 0.3s ease; 
 }
 
-/* Estilos para el formulario emergente */
 .popup-form {
     position: fixed;
     top: 50%;
@@ -188,18 +214,16 @@ main{
     transform: translate(-50%, -50%);
     background-color: white;
     color: black;
-    padding: 3em; /* Ajusta el tamaño del padding para hacer el formulario más grande */
+    padding: 3em; 
     border-radius: 10px;
-    z-index: 9999; /* Asegura que el formulario esté en la parte superior */
+    z-index: 9999;
 }
 
-/* Estilos para aplicar opacidad al contenido principal cuando el formulario emergente está activo */
 #contenidoPrincipal.popup-active {
     opacity: 25%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    background-color: rgba(0, 0, 0, 0.5); 
 }
 
-/* Estilos para el botón de cierre */
 .close-btn {
     position: absolute;
     top: 10px;
@@ -208,7 +232,6 @@ main{
     border: none;
     cursor: pointer;
 }
-
 
 
 /* TABLA CONTENIDO (main) */
@@ -230,24 +253,24 @@ main{
 
 .tabla-contenedor {
     overflow-x: auto;
-    margin-top: 3em; /* Ajuste de margen superior */
+    margin-top: 3em; 
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2em; /* Espacio adicional entre la tabla y otros elementos */
+    margin-bottom: 2em; 
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 1em; /* Reducción del espacio de relleno */
+    padding: 1em; 
     text-align: left;
 }
 
 th {
-    background-color: #333; /* Cambio de color de fondo */
-    color: white; /* Cambio de color de texto */
+    background-color: #333; 
+    color: white; 
 }
 
 tr:nth-child(even) {
@@ -261,16 +284,16 @@ tr:nth-child(even) {
 .contrasena-input {
     border: none;
     background: none;
-    padding-right: 2em; /* Reducción del espacio de relleno */
+    padding-right: 2em; 
 }
 
 .eye-icon {
     position: absolute;
     top: 50%;
-    right: 1em; /* Ajuste del espacio a la derecha */
+    right: 1em; 
     transform: translateY(-50%);
     cursor: pointer;
-    color: #333; /* Cambio de color del icono */
+    color: #333; 
 }
 
 
@@ -315,9 +338,9 @@ tr:nth-child(even) {
 /* AGREGAR CONTENIDO A GRUPO */
 
 #pop_up_form {
-    width: 40vw;
+    width: auto;
     margin: auto;
-    margin-top: 20vh;
+    margin-top: 2vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -336,6 +359,11 @@ tr:nth-child(even) {
     border-radius: 0.5rem;
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+#contenido{
+    height: 20vh;
 }
 
 
@@ -352,58 +380,52 @@ tr:nth-child(even) {
 }
 
 
-/* Estilo para el overlay */
 #overlay {
-    display: none; /* Oculto inicialmente */
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
-    z-index: 1000; /* Asegura que esté por encima del contenido principal */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
-/* Estilo para el passwordPopup */
 #passwordPopup {
-    display: none; /* Oculto inicialmente */
+    display: none; 
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: white; /* Fondo blanco */
-    color: black; /* Texto negro */
-    padding: 2em; /* Padding más amplio */
-    border-radius: 10px; /* Bordes redondeados */
-    z-index: 1001; /* Asegura que esté por encima del overlay */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra */
-    width: auto; /* Ancho consistente con otros elementos */
-    text-align: center; /* Centra el texto */
+    background-color: white; 
+    color: black; 
+    padding: 2em; 
+    border-radius: 10px; 
+    z-index: 1001; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: auto; 
+    text-align: center;
 }
 
-/* Estilo para el contenido del passwordPopup */
 #passwordPopup #generatedPassword {
-    margin-bottom: 1em; /* Espacio entre la contraseña y los botones */
-    display: block; /* Asegura que el span ocupe todo el ancho disponible */
-    font-size: 1.2em; /* Tamaño de fuente más grande */
-    font-weight: bold; /* Texto en negrita */
+    margin-bottom: 1em; 
+    display: block; 
+    font-size: 1.2em;
+    font-weight: bold; 
 }
 
-/* Estilo para los botones del passwordPopup */
 #passwordPopup button {
-    padding: 0.5em 1em; /* Espaciado interno */
-    margin: 0.5em; /* Espaciado externo */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cursor de mano */
-    background-color: #333; /* Fondo oscuro */
-    color: white; /* Texto blanco */
-    transition: background-color 0.3s; /* Transición suave */
+    padding: 0.5em 1em; 
+    margin: 0.5em; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    background-color: #333; 
+    color: white;
+    transition: background-color 0.3s; 
 }
 
-/* Estilo para el hover de los botones del passwordPopup */
 #passwordPopup button:hover {
-    background-color: #555; /* Color de fondo más claro al pasar el mouse */
+    background-color: #555;
 }
-
 

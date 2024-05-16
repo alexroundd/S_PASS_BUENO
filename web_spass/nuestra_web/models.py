@@ -16,9 +16,9 @@ class Contenido(models.Model):
     ]
     titulo = models.CharField(max_length=100)
     username = models.CharField(max_length=50)
-    contraseña = models.CharField(max_length=100, default='', validators=[MinLengthValidator(8)])
+    contraseña = models.CharField(max_length=100, default='', validators=[MinLengthValidator(1)])
     calidad_contraseña = models.CharField(max_length=10, choices=TITULO_CHOICES, default='Baja')
-    link = models.CharField(max_length=200, null=True) # Puedes cambiar el tipo de campo si necesitas algo más específico
+    link = models.CharField(max_length=200, null=True) 
     propietario = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
 
 
@@ -33,7 +33,7 @@ class Contenido(models.Model):
         tiene_mayusculas = any(char.isupper() for char in self.contraseña)
 
         if longitud >= 8 and caracteres_especiales and tiene_minusculas and tiene_mayusculas:
-            if longitud >= 16:
+            if longitud >= 12:
                 self.calidad_contraseña = 'Muy Alta'
             else:
                 self.calidad_contraseña = 'Alta'

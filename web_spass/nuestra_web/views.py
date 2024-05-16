@@ -16,8 +16,7 @@ from django.http import JsonResponse
 
 
 def register(request):
-#    if request.user.is_authenticated:
-#        return redirect('login')  # Redirige a la página principal si ya está autenticado
+
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
@@ -27,21 +26,6 @@ def register(request):
         form = RegisterForm()
     return render(request, 'register.html', {'form': form})
 
-# def loginView(request):
-#     if request.method == 'POST':
-#         form = LoginForm(request.POST)
-#         if form.is_valid():
-#             username = form.cleaned_data['username']
-#             password = form.cleaned_data['password']
-#             user = authenticate(request, username=username, password=password)
-#             if user is not None:
-#                 login(request, user)
-#                 return redirect('home') 
-#             else:
-#                 messages.error(request, 'Nombre de usuario o contraseña incorrectos.')
-#     else:
-#         form = LoginForm()
-#     return render(request, 'login.html', {'form': form})
 
 def home(request):
     if not request.user.is_authenticated:
@@ -61,7 +45,7 @@ def configuracion_contraseñas(request):
 
 def logoutView(request):
     logout(request) 
-    return redirect('login')  # Redirige a la página de inicio de sesión después de cerrar sesión
+    return redirect('login')  
 
 def crear_grupo(request):
     if not request.user.is_authenticated:
@@ -191,12 +175,6 @@ def generador(request):
     
 
 
-
-
-
-
-
-
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -227,7 +205,7 @@ def login_view(request):
                         'code': code,
                     })
                     email = EmailMessage(subject, message, 'alexrsen100@gmail.com', [user.email])
-                    email.content_subtype = 'html'  # Para enviar como HTML
+                    email.content_subtype = 'html' 
                     email.send()
                     return redirect('two_factor')
                 except BadHeaderError:

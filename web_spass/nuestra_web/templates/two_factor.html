@@ -6,11 +6,16 @@
     <div class="card" id="login-card">
         <div class="card-body">
             <h2>Verificació en dos passos</h2>
+            <br>
+            <p>Rebràs un codi al correu electronic, si us plau inserti'l per accedir</p>
+            <br>
             <form method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <div class="botones_login">
+                <div class="botones_login" style="margin-bottom: 1em;">
                     <button class="btn btn-success" type="submit">Verificar</button>
+                    <a class="btn btn-secondary" type="submit" href="{% url 'login' %}" >Cancel·la</a>
+
                 </div>
             </form>
 

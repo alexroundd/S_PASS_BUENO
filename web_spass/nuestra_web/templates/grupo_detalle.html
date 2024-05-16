@@ -15,30 +15,15 @@
 
 <div class="columnass" id="contenidoPrincipal">
 
-    <div class="columna_biblioteca ">
-        <a class="" href="{% url 'home' %}" style="text-decoration: none; color: #6c757d;"> 
+    <div class="columna_biblioteca columna_biblioteca_grups">
+        <a class="volver-home" href="{% url 'home' %}" style="text-decoration: none; color: #6c757d;">
             <i class="fa-solid fa-arrow-left fa-2xl"></i>
         </a>
-        <h2 class="biblioteca">Biblioteca</h2>
-        <div class="botones_biblioteca">
-            <a class="btn btn-outline-secondary" id="crear_grupo" href="javascript:void(0);" onclick="togglePopup()">Crear grup</a>
-
-
-            <a class="btn btn-outline-secondary" id="grupo_contentadduser" href="{% url 'grupo_contentadduser' %}">Afegir contingut al grup</a>
-        </div>
-
-
-        <ul class="grupos">
-        {% for grupo in grupos %}
-        <div class="grupos_biblioteca">
-            <li><a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'grupo_detalle' grupo.id %}">{{ grupo.titulo }}</a></li>
-            <form action="{% url 'eliminar_grupo' grupo.id %}" method="post">
+        <h2 class="biblioteca">Es troba al grup "{{ grupo.titulo }}", aquí es mostra el seu contingut.</h2>
+        <form action="{% url 'eliminar_grupo' grupo.id %}" method="post">
             {% csrf_token %}
-            <button class="btn btn-danger boton_eliminar_grupo" type="submit">Suprimir</button>
-            </form>
-        </div>
-        {% endfor %}
-        </ul>
+            <button class="btn btn-danger boton-suprimir" type="submit">Suprimir grup</button>
+        </form>
     </div>
 
     <div class="columna_entradas">

@@ -8,14 +8,15 @@
             <form id="pop_up_form" method="post" target="_self">
                 {% csrf_token %}
             
-                <h1>Grupo<br></h1>
+                <h1>Selecciona un grup per afegir contingut<br></h1>
                 <select name="grupos" id="grupos">
                     {% for grupo in grupos %}
                     <option value="{{grupo.id}}">{{grupo.titulo}}</option>
                     {% endfor %}
                 </select>
+                <br>
             
-                <h1>Contenido<br></h1>
+                <h1>Selecciona el contingut que vols afegir al grup<br></h1>
                 <select name="contenido" id="contenido" multiple>
                     {% for contenido in contenidos %}
                     <option value="{{contenido.id}}" style="margin-bottom: 0.50em;">{{contenido.titulo}}</option>
@@ -23,8 +24,8 @@
                 </select>
             <br>
             <div class="botones_agregar_contenido_grupo">
-                <button class="btn btn-secondary" type="submit">Add Value</button>
-                <a class="btn btn-outline-light" href="{% url 'home' %}">Volver</a>
+                <button class="btn btn-secondary" type="submit">Afegeix contingut al grup</button>
+                <a class="btn btn-danger" href="{% url 'home' %}">Tornar</a>
                 </form>
             </div>
         </div>  
